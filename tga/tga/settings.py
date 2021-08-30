@@ -27,7 +27,7 @@ SECRET_KEY ='Qwerty123$'
 DEBUG = True
 
 # Telegram bot
-TOKEN = '1906381181:AAHfgX4y0ZkdH8M6iJ5E5aQQAc0Wiy2h_IQ'
+TOKEN = '1923758971:AAFd2D0aKwtEb1yWCIqk-rsXzD1hav7GTSs'
 PROXY_URL = 'http://t.me/muhajeer_video_bot'
 
 ALLOWED_HOSTS = []

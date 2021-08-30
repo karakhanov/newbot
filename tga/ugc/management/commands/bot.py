@@ -1,3 +1,5 @@
+import datetime
+
 import requests
 from django.core.management.base import BaseCommand
 from django.conf import settings
@@ -12,7 +14,7 @@ import re
 import uuid
 from ugc.models import Profile
 from bs4 import BeautifulSoup
-
+from ugc.models import Message_url
 
 def log_errors(f):
     def inner(*args, **kwargs):
@@ -33,9 +35,17 @@ def start(update: Update, context: CallbackContext):
 
     # save user data
     try:
-        Profile(external_id=chat_id, name=update.message.from_user.username).save()
+        Profile(
+            external_id=chat_id,
+            name=update.message.from_user.username,
+            first_name=update.message.from_user.first_name,
+            l_name=update.message.from_user.last_name,
+            created_at=datetime.datetime.now(),
+            # avatar=update.message.from_user.get_profile_photos()
+        ).save()
         update.message.reply_text('Please send a link')
     except Exception as e:
+        print(e)
         update.message.reply_text('Please send a link')
 
 
@@ -49,12 +59,14 @@ def do_echo(update: Update, context: CallbackContext):
 
     # making soup and get link
     try:
+        # print(datetime.datetime.now())
+        update.message.reply_text('Please wait ...')
         data = requests.get(url)
         soup = BeautifulSoup(data.text, 'html.parser')
         video_url = soup.find(attrs={"data-quality": "240p"})['src']
         r = requests.get(video_url, allow_redirects=True)
-        update.message.reply_text('Please wait ...')
-    except:
+    except Exception as e:
+        print(e)
         update.message.reply_text('Oops...Invalid url or the size of video above 50 MB')
         return
 
@@ -62,15 +74,19 @@ def do_echo(update: Update, context: CallbackContext):
     file_name = f'{uuid.uuid4()}.mp4'
 
     # writing to os
-    with open(f"videos/{file_name}", 'wb') as f:
+    with open(f"../../tga/videos/{file_name}", 'wb') as f:
         f.write(r.content)
 
     # show status
     update.message.reply_text('Finished ✅')
     print('writing has been ended')
 
+    # save url to db
+    Message_url(profile=chat_id, text=url, created_at=datetime.datetime.now()).save()
+
     # send final result
-    update.message.reply_document(document=open(f"videos/{file_name}", 'rb'))
+    update.message.reply_video(video=open(f'../../../tga/videos/{file_name}', 'rb'))
+    # update.message.reply_document(document=open(f"../../../videos/{file_name}", 'rb'))
 
 
 class Command(BaseCommand):

@@ -28,7 +28,7 @@ DEBUG = True
 
 # Telegram bot
 <<<<<<< HEAD
-TOKEN = '1923758971:AAFd2D0aKwtEb1yWCIqk-rsXzD1hav7GTSs'
+TOKEN = '$$@'
 PROXY_URL = 'http://t.me/muhajeer_video_bot'
 =======
 TOKEN = 'BOT_TOKEN'

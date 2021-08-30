@@ -20,15 +20,15 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY ='Qwerty123$'
+SECRET_KEY = {Your_secret_key}
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
 # Telegram bot
-TOKEN = '1906381181:AAHfgX4y0ZkdH8M6iJ5E5aQQAc0Wiy2h_IQ'
-PROXY_URL = 'http://t.me/muhajeer_video_bot'
+TOKEN = 'BOT_TOKEN'
+PROXY_URL = 'BOT_ADDRESS'
 
 ALLOWED_HOSTS = []
 

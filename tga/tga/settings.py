@@ -16,12 +16,8 @@ from pathlib import Path
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-
-
-
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = {"d"}
-
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -35,7 +31,9 @@ PROXY_URL = 'http://t.me/muhajeer_video_bot'
 # PROXY_URL = 'BOT_ADDRESS'
 # >>>>>>> a0e98933fe080de4921f731d8db696ebf0913313
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    "45.153.230.21"
+]
 
 # Application definition
 

@@ -20,20 +20,20 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = {Your_secret_key}
+SECRET_KEY = {"d"}
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
 # Telegram bot
-<<<<<<< HEAD
+# <<<<<<< HEAD
 TOKEN = '$$@'
 PROXY_URL = 'http://t.me/muhajeer_video_bot'
-=======
-TOKEN = 'BOT_TOKEN'
-PROXY_URL = 'BOT_ADDRESS'
->>>>>>> a0e98933fe080de4921f731d8db696ebf0913313
+# =======
+# TOKEN = 'BOT_TOKEN'
+# PROXY_URL = 'BOT_ADDRESS'
+# >>>>>>> a0e98933fe080de4921f731d8db696ebf0913313
 
 ALLOWED_HOSTS = []
 
@@ -95,6 +95,7 @@ DATABASES = {
 AUTH_PASSWORD_VALIDATORS = [
 ]
 
+AUTH_USER_MODULE = 'ugc.Profile'
 # Internationalization
 # https://docs.djangoproject.com/en/3.2/topics/i18n/
 
